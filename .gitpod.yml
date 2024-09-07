@@ -33,12 +33,16 @@ tasks:
     command: |
       cd frontend-react-js
       npm i
-  - name: aws configure
-    init: |
-      # Set AWS environment variables
-      echo "export AWS_REGION=us-east-1" >> ~/.bashrc
-      # Reload the bash configuration
-      source ~/.bashrc
+  - command: |
+      if [ -f aws-setup.sh ]; then
+        source aws-setup.sh
+      fi
+      mkdir -p ~/.aws
+      echo "[default]" > ~/.aws/credentials
+      echo "aws_access_key_id = $AWS_ACCESS_KEY_ID" >> ~/.aws/credentials
+      echo "aws_secret_access_key = $AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials
+      echo "[default]" > ~/.aws/config
+      echo "region = ${AWS_DEFAULT_REGION:-us-east-1}" >> ~/.aws/config
 vscode:
   extensions:
     - 42Crunch.vscode-openapi
