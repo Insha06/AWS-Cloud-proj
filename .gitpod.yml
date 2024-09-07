@@ -39,10 +39,10 @@ tasks:
       fi
       mkdir -p ~/.aws
       echo "[default]" > ~/.aws/credentials
-      echo "aws_access_key_id = $AWS_ACCESS_KEY_ID" >> ~/.aws/credentials
-      echo "aws_secret_access_key = $AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials
+      echo "AWS_ACCESS_KEY_ID = $AWS_ACCESS_KEY_ID" >> ~/.aws/credentials
+      echo "AWS_SECRET_ACCESS_KEY = $AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials
       echo "[default]" > ~/.aws/config
-      echo "region = ${AWS_DEFAULT_REGION:-us-east-1}" >> ~/.aws/config
+      echo "AWS_DEFAULT_REGION = ${AWS_DEFAULT_REGION:-us-east-1}" >> ~/.aws/config
 vscode:
   extensions:
     - 42Crunch.vscode-openapi
